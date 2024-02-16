@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 class ViewController: UIViewController {
     private var imageView: ImageView = {
         let view = ImageView()
@@ -26,9 +25,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let signInButton = fillView.signInButton
         signInButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
+        let signUpButton = fillView.signUpButton
+        signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        let forgotPasswdButton = fillView.forgotPasswdButton
+        forgotPasswdButton.addTarget(self, action: #selector(forgotPasswdButtonTapped), for: .touchUpInside)
         setupUI()
         view.backgroundColor = UIColor.systemTeal
-        
     }
     
     private func setupUI() {
@@ -48,6 +50,15 @@ class ViewController: UIViewController {
         ])
     }
     
+    @objc func signUpButtonTapped () {
+        let vc = SignUpViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func forgotPasswdButtonTapped () {
+        let vc = NewPasswordController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     @objc func signInButtonTapped() {
         guard let email = fillView.emailTF.text, !email.isEmpty,
@@ -66,7 +77,6 @@ class ViewController: UIViewController {
         if fillView.passwordTF.text?.isEmpty ?? true {
             showError(for: fillView.passwordTF)
         }
-        
     }
     
     func showError(for textField: UITextField) {

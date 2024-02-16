@@ -18,9 +18,18 @@ class FillView: UIView{
     
      lazy var emailTF: UITextField = {
         let view = UITextField()
-        view.placeholder = "zhanake@gmail.com"
-        view.borderStyle = .bezel
-        view.translatesAutoresizingMaskIntoConstraints = false
+         view.placeholder = "zhanake@gmail.com"
+         view.translatesAutoresizingMaskIntoConstraints = false
+         let bottomLine = UIView()
+         bottomLine.backgroundColor = UIColor.gray
+         bottomLine.translatesAutoresizingMaskIntoConstraints = false
+         view.addSubview(bottomLine)
+         NSLayoutConstraint.activate([
+             bottomLine.heightAnchor.constraint(equalToConstant: 1),
+             bottomLine.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+             bottomLine.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+             bottomLine.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+         ])
         return view
     } ()
     
@@ -36,13 +45,22 @@ class FillView: UIView{
     
     lazy var passwordTF: UITextField = {
         let view = UITextField()
+        let bottomLine = UIView()
+        bottomLine.backgroundColor = UIColor.gray
+        bottomLine.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bottomLine)
+        NSLayoutConstraint.activate([
+            bottomLine.heightAnchor.constraint(equalToConstant: 1),
+            bottomLine.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomLine.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bottomLine.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
         view.placeholder = "12345678"
-        view.borderStyle = .bezel
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     } ()
     
-    private lazy var hideIconBtn: UIButton = {
+     lazy var hideIconBtn: UIButton = {
        let view = UIButton()
         view.setImage(UIImage(named: "eyeIcon"), for: .normal)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +68,7 @@ class FillView: UIView{
     }()
     
     
-    private lazy var forgotPasswdButton: UIButton = {
+     lazy var forgotPasswdButton: UIButton = {
        let view = UIButton()
         view.setTitle("Forgot password?", for: .normal)
         view.titleLabel?.font = .systemFont(ofSize: 12, weight: .regular)
@@ -103,7 +121,7 @@ class FillView: UIView{
         return view
     }()
     
-    private lazy var signUpButton: UIButton = {
+     lazy var signUpButton: UIButton = {
        let view = UIButton()
         view.setTitle("Sign Up", for: .normal)
         view.setTitleColor(.blue, for: .normal)
@@ -145,7 +163,7 @@ class FillView: UIView{
         ])
         addSubview(hideIconBtn)
         NSLayoutConstraint.activate([
-            hideIconBtn.topAnchor.constraint(equalTo: passwordText.bottomAnchor, constant: 5),
+            hideIconBtn.centerYAnchor.constraint(equalTo: passwordTF.centerYAnchor),
             hideIconBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             hideIconBtn.heightAnchor.constraint(equalToConstant: 25),
             hideIconBtn.widthAnchor.constraint(equalToConstant: 25)

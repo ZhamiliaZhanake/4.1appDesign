@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 class SuccessViewController: UIViewController {
     private lazy var sucessImage: UIImageView = {
         let view = UIImageView()
@@ -26,7 +25,7 @@ class SuccessViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
-        
+    
         super.viewDidLoad()
         view.backgroundColor = UIColor.systemTeal
         setupUI()
@@ -46,6 +45,6 @@ class SuccessViewController: UIViewController {
             successLabel.topAnchor.constraint(equalTo: sucessImage.bottomAnchor, constant: 20),
             successLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        
+    
     }
 }
